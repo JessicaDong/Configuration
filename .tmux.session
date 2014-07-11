@@ -1,0 +1,30 @@
+#!/bin/sh
+
+TMUX=$(which tmux)
+
+if [[ -z $TMUX ]]; then
+    echo "You need to install tmux."
+    exit 1
+fi
+
+SESSION_NAME=AAA
+
+$TMUX has-session -t $SESSION_NAME
+if [[ $? != 0 ]]; then
+    $TMUX new-session -s $SESSION_NAME -n "local" -d
+
+    $TMUX new-window -n "xxx" -t $SESSION_NAME
+    $TMUX send-keys -t $SESSION_NAME "ssh xxx" C-m
+    $TMUX send-keys -t $SESSION_NAME "pwdx" C-m
+
+    $TMUX new-window -n "yyy" -t $SESSION_NAME
+    $TMUX send-keys -t $SESSION_NAME "ssh yyy" C-m
+    $TMUX send-keys -t $SESSION_NAME "pwdy" C-m
+
+    $TMUX new-window -n "zzz" -t $SESSION_NAME
+    $TMUX send-keys -t $SESSION_NAME "ssh zzz" C-m
+    $TMUX send-keys -t $SESSION_NAME "pwdz" C-m
+
+fi
+
+$TMUX attach -t $SESSION_NAME
