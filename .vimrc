@@ -14,3 +14,6 @@ set hlsearch   " highlighting the last used search pattern
 set ignorecase " ignore case when using a search pattern
 
 set title      " show info in the window title
+
+"set tabstop=x     " tabstops of x
+"set shiftwidth=x  " indents of x
