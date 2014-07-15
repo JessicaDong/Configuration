@@ -17,3 +17,5 @@ set title      " show info in the window title
 
 "set tabstop=x     " tabstops of x
 "set shiftwidth=x  " indents of x
+
+set ruler      " display row,column info
