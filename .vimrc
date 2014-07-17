@@ -19,3 +19,5 @@ set title      " show info in the window title
 "set shiftwidth=x  " indents of x
 
 set ruler      " display row,column info
+
+“set cinoptions=t0,(.5s,u0,:0,+.5s 
