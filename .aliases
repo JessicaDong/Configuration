@@ -4,3 +4,7 @@ alias lla='ls -al'
 alias lt='ls -lrt'
 
 alias grep='grep --color'
+
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
