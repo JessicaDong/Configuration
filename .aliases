@@ -1,3 +1,5 @@
+
+alias ls='/usr/local/bin/ls --color=auto'
 alias ll='ls -l'
 alias la='ls -a'
 alias lla='ls -al'
@@ -8,3 +10,46 @@ alias grep='grep --color'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
+alias cdd='cd -'
+alias cdl='cd !$'
+
+alias mkdir='mkdir -p'
+
+alias clr='clear'
+
+alias rm='rm -i'
+
+alias cp='cp -r'
+
+# GIT
+alias git='git'
+alias gb='git branch'
+alias gba='git branch -a'
+alias gc='git commit -v'
+alias gca='git commit -v -a'
+alias gdiff='git diff | colordiff'
+alias gdiffm='git diff | mate'
+alias gpl='git pull'
+alias gps='git push'
+
+# HG
+
+
+#
+# Dotfile management
+#
+function pull-dotfiles-from () {
+  [ -z $1 ] \
+    && echo -e "Usage:\n    $FUNCNAME [user@]hostname [ssh-args]" \
+    || ( mkdir -p $HOME/.dotfile-backup; \
+    cp $HOME/.{bashrc,bash_profile,aliases,tmux.conf,tmux.session} $HOME/.dotfile-backup; \
+    scp $2 $1:'$HOME/.{bashrc,bash_profile,aliases,tmux.conf,tmux.session}' $HOME );
+}
+
+function push-dotfiles-to () {
+  [ -z $1 ] \
+    && echo -e "Usage:\n    $FUNCNAME [user@]hostname [ssh-args]" \
+    || ( ssh $1 'mkdir -p $HOME/.dotfile-backup; \
+    cp $HOME/.{bashrc,bash_profile,aliases,tmux.conf,tmux.session} $HOME/.dotfile-backup'; \
+    scp $HOME/.{bashrc,bash_profile,aliases,tmux.conf,tmux.session} $2 $1:'$HOME' );
+}
